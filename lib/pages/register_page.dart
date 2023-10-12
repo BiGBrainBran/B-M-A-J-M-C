@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/button.dart';
 import '../components/textfield.dart';
 import '../theme/colors.dart';
+import 'package:flutter/widgets.dart';
 
 /*
 
@@ -28,10 +29,11 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // logo
-              const Icon(
-                Icons.person,
-                size: 80,
+              // Logo con la imagen en lugar del icono
+              Image.asset(
+                'assets/images/icon.png',  // Ruta de la imagen
+                width: 80,
+                height: 80,
                 color: Colors.white,
               ),
 
