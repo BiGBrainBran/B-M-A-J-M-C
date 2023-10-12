@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Inicio"),
         backgroundColor: primaryColor,
-        elevation: 0,
+        elevation: 4,
       ),
       backgroundColor: backgroundColor,
       drawer: Drawer(
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(
                     Icons.favorite,
                     color: Colors.white,
-                    size: 36,
+                    size: 30,
                   ),
                 ),
 

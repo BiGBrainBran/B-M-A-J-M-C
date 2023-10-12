@@ -3,6 +3,7 @@ import '../components/button.dart';
 import '../components/textfield.dart';
 import '../theme/colors.dart';
 import 'home_page.dart';
+import 'package:flutter/widgets.dart';
 
 /*
 
@@ -47,10 +48,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // logo
-              const Icon(
-                Icons.person,
-                size: 80,
+              // Cambia Icon por Image.asset
+              Image.asset(
+                'assets/images/icon.png',  // Ruta de la imagen
+                width: 80,
+                height: 80,
                 color: Colors.white,
               ),
 
