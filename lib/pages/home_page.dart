@@ -3,7 +3,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../theme/colors.dart';
 import 'package:flutter/widgets.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
 
@@ -205,21 +204,37 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // TextField for destination
-            Padding(
+            SizedBox(height: 20),
+
+            Container(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(
-                controller: _destinationController,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.expand_circle_down_outlined,
-                    color: Colors.blue,
-                  ),
-                  hintText: '¿A donde quieres ir?',
-                  hintStyle: TextStyle(color: Colors.grey),
-                  border: OutlineInputBorder(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Add functionality for the button here
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,  // Fondo blanco
+                  onPrimary: Colors.blue,  // Color del texto
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
+                    side: BorderSide(color: Colors.blue),  // Borde azul
                   ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.expand_circle_down_outlined,
+                      color: Colors.blue,  // Color del icono
+                    ),
+                    SizedBox(width: 10.0),
+                    Text(
+                      '¿A donde te llevamos?',
+                      style: TextStyle(color: Colors.blue),  // Color del texto
+                    ),
+                  ],
                 ),
               ),
             ),
