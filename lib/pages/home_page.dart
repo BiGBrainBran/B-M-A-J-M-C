@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,  // Fondo blanco
                   onPrimary: Colors.blue,  // Color del texto
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     side: BorderSide(color: Colors.blue),  // Borde azul
