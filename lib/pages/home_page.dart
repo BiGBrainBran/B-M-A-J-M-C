@@ -20,10 +20,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: primaryColor,
         elevation: 1,
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.black),  // Set the icon color to black
         title: Text(
           'BMAJMC',
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: 18, color: Colors.black),  // Set the text color to black
         ),
         actions: [
           IconButton(
@@ -33,12 +33,13 @@ class _HomePageState extends State<HomePage> {
                 Icon(Icons.help, color: Colors.black),
                 Text(
                   'Soporte',
-                  style: TextStyle(fontSize: 8, color: Colors.black),
+                  style: TextStyle(fontSize: 8, color: Colors.black),  // Set the text color to black
                 ),
               ],
             ),
             onPressed: () {
               // Add your help functionality here
+
             },
           ),
         ],
@@ -49,7 +50,73 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // ... Drawer content
+            Column(
+              children: [
+                Image.asset(
+                  'assets/images/icon.png',
+                  width: 80,
+                  height: 200,
+                  color: Colors.blueAccent,
+                ),
+                const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
+                    title: const Text(
+                      "I N I C I O",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.person,
+                      color: Colors.black,
+                    ),
+                    title: const Text(
+                      "P E R F I L",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, '/profile_page');
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0, bottom: 25.0),
+              child: ListTile(
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      color: Colors.black,
+                    ),
+                    Text(
+                      'S A L I R',
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, '/login_register_page');
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -62,82 +129,70 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Add functionality for "Solicitar Moto"
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.motorcycle, color: Colors.black),
-                          SizedBox(height: 10),  // Espacio entre el icono y el texto
-                          AutoSizeText(
-                            'Moto',
-                            style: TextStyle(color: Colors.black),
-                            maxLines: 1,
-                            minFontSize: 10,
-                            maxFontSize: 18,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add functionality for "Solicitar Moto"
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      minimumSize: Size(5, 50),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.motorcycle, color: Colors.black),  // Set icon color to black
+                        AutoSizeText(
+                          'Moto',
+                          style: TextStyle(color: Colors.black),
+                          maxLines: 1,
+                          minFontSize: 10,
+                          maxFontSize: 18,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Add functionality for "Solicitar Carro"
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.directions_car, color: Colors.black),
-                          SizedBox(height: 10),  // Espacio entre el icono y el texto
-                          AutoSizeText(
-                            'Carro',
-                            style: TextStyle(color: Colors.black),
-                            maxLines: 1,
-                            minFontSize: 10,
-                            maxFontSize: 18,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add functionality for "Solicitar Carro"
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      minimumSize: Size(5, 50),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.directions_car, color: Colors.black),  // Set icon color to black
+                        AutoSizeText(
+                          'Carro',
+                          style: TextStyle(color: Colors.black),
+                          maxLines: 1,
+                          minFontSize: 10,
+                          maxFontSize: 18,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Add functionality for "Servicio de Mensajería"
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.local_shipping, color: Colors.black),
-                          SizedBox(height: 10),  // Espacio entre el icono y el texto
-                          AutoSizeText(
-                            'Mensajería',
-                            style: TextStyle(color: Colors.black),
-                            maxLines: 1,
-                            minFontSize: 10,
-                            maxFontSize: 18,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add functionality for "Servicio de Mensajería"
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      minimumSize: Size(5, 50),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.local_shipping, color: Colors.black),  // Set icon color to black
+                        AutoSizeText(
+                          'Mensajería',
+                          style: TextStyle(color: Colors.black),
+                          maxLines: 1,
+                          minFontSize: 10,
+                          maxFontSize: 18,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   ),
                 ],
