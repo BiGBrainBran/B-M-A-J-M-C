@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
             ),
             onPressed: () {
               // Add your help functionality here
-
             },
           ),
         ],
@@ -135,18 +134,20 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(5, 50),
+                      minimumSize: Size(120, 90),  // Adjusted minimumSize
+                      padding: EdgeInsets.all(10.0),  // Adjusted padding
                     ),
                     child: Column(
                       children: [
                         Icon(Icons.motorcycle, color: Colors.black),  // Set icon color to black
+                        SizedBox(height: 10), // Add some space between icon and text
                         AutoSizeText(
                           'Moto',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left, // Align text to the left
                         ),
                       ],
                     ),
@@ -157,18 +158,20 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(5, 50),
+                      minimumSize: Size(120, 90),  // Adjusted minimumSize
+                      padding: EdgeInsets.all(10.0),  // Adjusted padding
                     ),
                     child: Column(
                       children: [
                         Icon(Icons.directions_car, color: Colors.black),  // Set icon color to black
+                        SizedBox(height: 10), // Add some space between icon and text
                         AutoSizeText(
                           'Carro',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left, // Align text to the left
                         ),
                       ],
                     ),
@@ -179,18 +182,20 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(5, 50),
+                      minimumSize: Size(120, 90),  // Adjusted minimumSize
+                      padding: EdgeInsets.all(10.0),  // Adjusted padding
                     ),
                     child: Column(
                       children: [
                         Icon(Icons.local_shipping, color: Colors.black),  // Set icon color to black
+                        SizedBox(height: 10), // Add some space between icon and text
                         AutoSizeText(
                           'Mensajería',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.left, // Align text to the left
                         ),
                       ],
                     ),
