@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:appscratch/theme/colors.dart';
-
-/*
-
-PROFILE PAGE
-
-*/
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -43,72 +36,96 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Perfil"),
-        backgroundColor: primaryColor,
-        elevation: 0,
+        title: const Text(
+          "TU PERFIL",
+          style: TextStyle(color: Colors.black) ,  // Cambiar color del texto a negro
+        ),
+        backgroundColor: Colors.white,  // Cambiar color de fondo a blanco
+        elevation: 4,  // Establecer la elevación a 4 para la sombra
+        iconTheme: IconThemeData(color: Colors.black),  // Cambiar color del icono de volver a negro
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        centerTitle: true,  // Alinear el texto "Perfil" al centro
       ),
-      backgroundColor: backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.only(top: 30.0), // Ajusta el margen superior
+        padding: const EdgeInsets.only(top: 30.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Icono o imagen de perfil
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 60,
-                  color: Colors.blueAccent,
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 2.0,
+                  ),
+                ),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.person,
+                    size: 60,
+                    color: Colors.blueAccent,
+                  ),
                 ),
               ),
-
               const SizedBox(height: 20),
-
-              // Nombre de usuario
-              Text(
-                'Nombre de usuario',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-
-              const SizedBox(height: 10),
-
-              // Descripción editable o mostrada
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _isEditing
-                    ? TextField(
-                  controller: _descriptionController,
-                  maxLines: null,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
+                    ? Container(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue[100],
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
                   ),
-                  decoration: InputDecoration(
-                    hintText: "Ingresa tu descripción",
-                    hintStyle: TextStyle(color: Colors.grey),
+                  child: TextField(
+                    controller: _descriptionController,
+                    maxLines: null,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                    decoration: InputDecoration(
+                      hintText: "Ingresa tu descripción",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: InputBorder.none,
+                    ),
                   ),
                 )
-                    : Text(
-                  _description,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
+                    : Container(
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue[100],
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      _description,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ),
               ),
-
               const SizedBox(height: 10),
-
-              // Icono para editar la descripción
               _isEditing
                   ? IconButton(
                 icon: Icon(Icons.save),
@@ -125,4 +142,3 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-

@@ -3,7 +3,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../theme/colors.dart';
 import 'package:flutter/widgets.dart';
 
-// ... Existing imports
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
@@ -13,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController _destinationController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +21,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: primaryColor,
         elevation: 1,
         centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),  // Set the icon color to black
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          'BMAJMC',
-          style: TextStyle(fontSize: 18, color: Colors.black),  // Set the text color to black
+          'B M A J M C',
+          style: TextStyle(fontSize: 18, color: Colors.blueAccent),
         ),
         actions: [
           IconButton(
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                 Icon(Icons.help, color: Colors.black),
                 Text(
                   'Soporte',
-                  style: TextStyle(fontSize: 8, color: Colors.black),  // Set the text color to black
+                  style: TextStyle(fontSize: 8, color: Colors.black),
                 ),
               ],
             ),
@@ -134,20 +135,20 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(120, 90),  // Adjusted minimumSize
-                      padding: EdgeInsets.all(10.0),  // Adjusted padding
+                      minimumSize: Size(120, 90),
+                      padding: EdgeInsets.all(10.0),
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.motorcycle, color: Colors.black),  // Set icon color to black
-                        SizedBox(height: 10), // Add some space between icon and text
+                        Image.asset('assets/images/moto.png', width: 40, height: 40),
+                        SizedBox(height: 10),
                         AutoSizeText(
                           'Moto',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.left, // Align text to the left
+                          textAlign: TextAlign.left,
                         ),
                       ],
                     ),
@@ -158,20 +159,20 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(120, 90),  // Adjusted minimumSize
-                      padding: EdgeInsets.all(10.0),  // Adjusted padding
+                      minimumSize: Size(120, 90),
+                      padding: EdgeInsets.all(10.0),
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.directions_car, color: Colors.black),  // Set icon color to black
-                        SizedBox(height: 10), // Add some space between icon and text
+                        Image.asset('assets/images/car.png', width: 40, height: 40),
+                        SizedBox(height: 10),
                         AutoSizeText(
                           'Carro',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.left, // Align text to the left
+                          textAlign: TextAlign.left,
                         ),
                       ],
                     ),
@@ -182,25 +183,44 @@ class _HomePageState extends State<HomePage> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      minimumSize: Size(120, 90),  // Adjusted minimumSize
-                      padding: EdgeInsets.all(10.0),  // Adjusted padding
+                      minimumSize: Size(120, 90),
+                      padding: EdgeInsets.all(10.0),
                     ),
                     child: Column(
                       children: [
-                        Icon(Icons.local_shipping, color: Colors.black),  // Set icon color to black
-                        SizedBox(height: 10), // Add some space between icon and text
+                        Image.asset('assets/images/camion.png', width: 40, height: 40),
+                        SizedBox(height: 10),
                         AutoSizeText(
                           'Mensajería',
                           style: TextStyle(color: Colors.black),
                           maxLines: 1,
                           minFontSize: 10,
                           maxFontSize: 18,
-                          textAlign: TextAlign.left, // Align text to the left
+                          textAlign: TextAlign.left,
                         ),
                       ],
                     ),
                   ),
                 ],
+              ),
+            ),
+
+            // TextField for destination
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                controller: _destinationController,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.expand_circle_down_outlined,
+                    color: Colors.blue,
+                  ),
+                  hintText: '¿A donde quieres ir?',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
               ),
             ),
           ],
