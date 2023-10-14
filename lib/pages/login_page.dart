@@ -23,7 +23,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // text controllers
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
 
   // login method
@@ -32,10 +31,11 @@ class _LoginPageState extends State<LoginPage> {
 
     // go to home page
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ));
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ),
+    );
   }
 
   @override
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                 'assets/images/icon.png',  // Ruta de la imagen
                 width: 80,
                 height: 80,
-                color: Colors.white,
+                color: Colors.blueAccent,
               ),
 
               const SizedBox(height: 25),
@@ -63,7 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                 'B M A J M C',
                 style: TextStyle(
                   //fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
                 ),
               ),
 
@@ -114,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Text(
                     "No tienes una cuenta?",
-                    style: TextStyle(color: Colors.deepPurple[50]),
+                    style: TextStyle(color: Colors.black),
                   ),
                   const SizedBox(width: 5),
                   GestureDetector(
@@ -135,3 +136,37 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+class MyButton extends StatelessWidget {
+  final String text;
+  final void Function() onTap;
+
+  const MyButton({
+    required this.text,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+          color: Colors.blueAccent,  // Border color
+        ),
+      ),
+      child: TextButton(
+        onPressed: onTap,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.blueAccent,
+            fontSize: 16.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
+

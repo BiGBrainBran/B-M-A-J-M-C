@@ -61,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Icon(
                   Icons.person,
                   size: 60,
-                  color: Colors.blue,
+                  color: Colors.blueAccent,
                 ),
               ),
 
@@ -73,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
 
@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   decoration: InputDecoration(
                     hintText: "Ingresa tu descripción",
@@ -101,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),

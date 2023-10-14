@@ -24,8 +24,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const LoginOrRegister(),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
       ),
       routes: {
         '/login_register_page': (context) => const LoginOrRegister(),

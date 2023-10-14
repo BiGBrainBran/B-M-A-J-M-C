@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import '../theme/colors.dart';
+import 'package:flutter/widgets.dart';
 
-/*
-
-HOME PAGE
-
-This page is displayed when the user logs in.
-It contains a drawer menu where the user can navigate around the app.
-
-*/
+// ... Existing imports
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,9 +17,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inicio"),
         backgroundColor: primaryColor,
-        elevation: 4,
+        elevation: 1,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text(
+          'BMAJMC',
+          style: TextStyle(fontSize: 18, color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+            icon: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.help, color: Colors.black),
+                Text(
+                  'Soporte',
+                  style: TextStyle(fontSize: 8, color: Colors.black),
+                ),
+              ],
+            ),
+            onPressed: () {
+              // Add your help functionality here
+            },
+          ),
+        ],
       ),
       backgroundColor: backgroundColor,
       drawer: Drawer(
@@ -32,82 +49,98 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              children: [
-                // drawer header
-                const DrawerHeader(
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                ),
-
-                const SizedBox(height: 25),
-
-                // home tile
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.home,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      "I N I C I O",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onTap: () {
-                      // pop drawer
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-
-                // profile tile
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.person,
-                      color: Colors.white,
-                    ),
-                    title: const Text(
-                      "P E R F I L",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onTap: () {
-                      // pop drawer
-                      Navigator.pop(context);
-
-                      // go to profile page
-                      Navigator.pushNamed(context, '/profile_page');
-                    },
-                  ),
-                ),
-              ],
-            ),
-
-            // logout
+            // ... Drawer content
+          ],
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
             Padding(
-              padding: const EdgeInsets.only(left: 25.0, bottom: 25.0),
-              child: ListTile(
-                leading: const Icon(
-                  Icons.logout,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "S A L I R",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {
-                  // pop drawer
-                  Navigator.pop(context);
-
-                  // go to login page
-                  Navigator.pushReplacementNamed(
-                      context, '/login_register_page');
-                },
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for "Solicitar Moto"
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.motorcycle, color: Colors.black),
+                          SizedBox(height: 10),  // Espacio entre el icono y el texto
+                          AutoSizeText(
+                            'Moto',
+                            style: TextStyle(color: Colors.black),
+                            maxLines: 1,
+                            minFontSize: 10,
+                            maxFontSize: 18,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for "Solicitar Carro"
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.directions_car, color: Colors.black),
+                          SizedBox(height: 10),  // Espacio entre el icono y el texto
+                          AutoSizeText(
+                            'Carro',
+                            style: TextStyle(color: Colors.black),
+                            maxLines: 1,
+                            minFontSize: 10,
+                            maxFontSize: 18,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality for "Servicio de Mensajería"
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        minimumSize: Size(120, 80), // Ajusta el ancho mínimo y alto aquí
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.local_shipping, color: Colors.black),
+                          SizedBox(height: 10),  // Espacio entre el icono y el texto
+                          AutoSizeText(
+                            'Mensajería',
+                            style: TextStyle(color: Colors.black),
+                            maxLines: 1,
+                            minFontSize: 10,
+                            maxFontSize: 18,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

@@ -1,18 +1,43 @@
 import 'package:flutter/material.dart';
-import '../components/button.dart';
 import '../components/textfield.dart';
 import '../theme/colors.dart';
-import 'package:flutter/widgets.dart';
 
-/*
+class MyButton extends StatelessWidget {
+  final String text;
+  final void Function() onTap;
 
-REGISTER PAGE
+  const MyButton({
+    required this.text,
+    required this.onTap,
+  });
 
-*/
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+          color: Colors.blueAccent,  // Border color
+        ),
+      ),
+      child: TextButton(
+        onPressed: onTap,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Colors.blueAccent,
+            fontSize: 16.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class RegisterPage extends StatelessWidget {
   final void Function()? onTap;
-  RegisterPage({super.key, required this.onTap});
+  RegisterPage({Key? key, required this.onTap});
 
   // text controllers
   final TextEditingController emailController = TextEditingController();
@@ -34,7 +59,7 @@ class RegisterPage extends StatelessWidget {
                 'assets/images/icon.png',  // Ruta de la imagen
                 width: 80,
                 height: 80,
-                color: Colors.white,
+                color: Colors.blue,
               ),
 
               const SizedBox(height: 25),
@@ -44,7 +69,7 @@ class RegisterPage extends StatelessWidget {
                 'B M A J M C',
                 style: TextStyle(
                   //fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 20, fontWeight: FontWeight.bold
                 ),
               ),
 
@@ -91,7 +116,7 @@ class RegisterPage extends StatelessWidget {
                 children: [
                   Text(
                     "Ya tienes una cuenta?",
-                    style: TextStyle(color: Colors.deepPurple[50]),
+                    style: TextStyle(color: Colors.black),
                   ),
                   const SizedBox(width: 5),
                   GestureDetector(
