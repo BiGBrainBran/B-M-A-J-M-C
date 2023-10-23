@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../theme/colors.dart';
 import 'package:flutter/widgets.dart';
+import 'map_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
@@ -130,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      // Add functionality for "Solicitar Moto"
+                      Navigator.pushNamed(context, '/map_page'); // Redirige a map_page.dart
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
@@ -154,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Add functionality for "Solicitar Carro"
+                      Navigator.pushNamed(context, '/map_page'); // Redirige a map_page.dart
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
@@ -178,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      // Add functionality for "Servicio de Mensajería"
+                      Navigator.pushNamed(context, '/map_page'); // Redirige a map_page.dart
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
@@ -210,7 +212,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(20.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Add functionality for the button here
+                  Navigator.pushNamed(context, '/map_page'); // Redirige a map_page.dart
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,  // Fondo blanco
