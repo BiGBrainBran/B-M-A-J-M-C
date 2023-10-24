@@ -15,7 +15,8 @@ class MapSample extends StatefulWidget {
 class MapSampleState extends State<MapSample> {
   final Completer<GoogleMapController> _controller =
   Completer<GoogleMapController>();
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController _originController = TextEditingController();
+  TextEditingController _destinationController = TextEditingController();
 
 
   Set <Marker> _markers = Set<Marker>();
@@ -81,24 +82,48 @@ class MapSampleState extends State<MapSample> {
       appBar: AppBar(title: Text('BMAJMC'),),
       body: Column(
         children: [
-          Row(children: [
-            Expanded(child: TextFormField(
-              controller: _searchController,
-              textCapitalization: TextCapitalization.words,
-              decoration: InputDecoration(hintText: 'Search by city'),
-              onChanged: (value){print((value));
-                },
-            ),
-            ),
-            IconButton(
-              onPressed: () async{
-                var place =
-                    await LocationService().getPlace(_searchController.text);
-                _goToPlace(place);
-              },
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                  TextFormField(
+                    controller: _originController,
+                    decoration: InputDecoration(hintText: 'Origen'),
+                    onChanged: (value){print((value));
+                    },
+                  ),
+                  TextFormField(
+                    controller: _destinationController,
+                    decoration: InputDecoration(hintText: 'Destino'),
+                    onChanged: (value){print((value));
+                    },
+                  ),
 
-              icon: Icon(Icons.search),),
-          ],),
+                ],),
+              ),
+              IconButton(
+                onPressed: () async{
+                  //var place =
+                  //await LocationService().getPlace(_searchController.text);
+                  //_goToPlace(place);
+                },
+
+                icon: Icon(Icons.search),
+              ),
+            ],
+          ),
+
+
+
+
+
+
+
+
+
+
+
 
           Expanded(
             child: GoogleMap(
