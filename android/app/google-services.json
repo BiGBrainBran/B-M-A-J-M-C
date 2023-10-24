@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "820869317613",
+    "project_id": "bmajmc-b5293",
+    "storage_bucket": "bmajmc-b5293.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820869317613:android:1154e0463f112d1df89de4",
+        "android_client_info": {
+          "package_name": "com.example.appscratch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH0VP8gaqu0A3ym37Ql2fNwgXs8nBPhug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
