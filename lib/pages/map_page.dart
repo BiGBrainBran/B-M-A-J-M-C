@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:appscratch/pages/location_service.dart';
+import 'drivers.dart'; // Importa el archivo de conductores
 
 class MapSample extends StatefulWidget {
   const MapSample({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMAJMC'),
+        title: Text('BMAJMC Map'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -48,68 +48,6 @@ class MapSampleState extends State<MapSample> {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: _originController,
-                      decoration: InputDecoration(
-                        hintText: 'Ciudad / Departamento / Barrio',
-                      ),
-                      onChanged: (value) {
-                        print((value));
-                      },
-                      textAlign: TextAlign.center,
-                      textAlignVertical: TextAlignVertical.center,
-                    ),
-                    TextFormField(
-                      controller: _destinationController,
-                      decoration: InputDecoration(
-                        hintText: 'Ciudad / Departamento / Barrio',
-                      ),
-                      onChanged: (value) {
-                        print((value));
-                      },
-                      textAlign: TextAlign.center,
-                      textAlignVertical: TextAlignVertical.center,
-                    ),
-                  ],
-                ),
-              ),
-              IconButton(
-                onPressed: () async {
-                  var directions = await LocationService().getDirections(
-                    _originController.text,
-                    _destinationController.text,
-                  );
-                  _goToPlace(
-                    directions['start_location']['lat'],
-                    directions['start_location']['lng'],
-                    directions['bounds_ne'],
-                    directions['bounds_sw'],
-                  );
-
-                  _setPolyline(directions['polyline_decoded']);
-
-                  setState(() {
-                    totalCost = calculatePrice(directions['polyline_decoded']);
-                  });
-                },
-                icon: Icon(Icons.search),
-              ),
-            ],
-          ),
-
-          ElevatedButton(
-            onPressed: null, // Establece onPressed como null para que el botón no sea clickeable
-            child: Text('Precio Total: \$${totalCost.toInt()} COP'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey, // Puedes personalizar el color del botón según tus preferencias
-            ),
-          ),
-
           Expanded(
             child: GoogleMap(
               mapType: MapType.hybrid,
@@ -126,6 +64,72 @@ class MapSampleState extends State<MapSample> {
                   _setPolygon();
                 });
               },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: _originController,
+                  decoration: InputDecoration(
+                    labelText: 'Origen',
+                    hintText: 'Ciudad / Departamento / Barrio',
+                  ),
+                  onChanged: (value) {
+                    print((value));
+                  },
+                  textAlign: TextAlign.center,
+                ),
+                TextFormField(
+                  controller: _destinationController,
+                  decoration: InputDecoration(
+                    labelText: 'Destino',
+                    hintText: 'Ciudad / Departamento / Barrio',
+                  ),
+                  onChanged: (value) {
+                    print((value));
+                  },
+                  textAlign: TextAlign.center,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    var directions = await LocationService().getDirections(
+                      _originController.text,
+                      _destinationController.text,
+                    );
+                    _goToPlace(
+                      directions['start_location']['lat'],
+                      directions['start_location']['lng'],
+                      directions['bounds_ne'],
+                      directions['bounds_sw'],
+                    );
+                    _setPolyline(directions['polyline_decoded']);
+                    setState(() {
+                      totalCost = calculatePrice(directions['polyline_decoded']);
+                    });
+                  },
+                  child: Text('Calcular Precio'),
+                ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: totalCost > 0
+                      ? () {
+                    // Redirige a la pantalla "DriversScreen"
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DriversScreen()), // Usa el nombre correcto de tu clase de pantalla de conductores
+                    );
+                  }
+                      : null,
+                  child: Text('Contactar un Conductor'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+                SizedBox(height: 16),
+                Text('Precio Total: \$${totalCost.toStringAsFixed(2)} COP', style: TextStyle(fontSize: 20)),
+              ],
             ),
           ),
         ],
