@@ -4,7 +4,7 @@ import '../components/textfield.dart';
 import '../theme/colors.dart';
 import 'home_page.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 /*
 
 LOGIN PAGE
@@ -18,7 +18,7 @@ class LoginPage extends StatefulWidget {
 
   final void Function()? onTap;
 
-  const LoginPage({super.key, required this.onTap});
+  const LoginPage({super.key, this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -30,16 +30,23 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   // login method
-  void login() {
-    // authenticate using your preferred service
+  void login() async {
+    try{
 
-    // go to home page
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomePage(),
+        ),
+      );
+
+    }  catch (e){print(e);}
+
   }
 
   @override

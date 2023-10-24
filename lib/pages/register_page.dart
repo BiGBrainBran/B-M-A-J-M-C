@@ -1,6 +1,10 @@
+import 'package:appscratch/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import '../components/textfield.dart';
 import '../theme/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'home_page.dart';
+import 'package:flutter/widgets.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
@@ -10,6 +14,8 @@ class MyButton extends StatelessWidget {
     required this.text,
     required this.onTap,
   });
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +41,44 @@ class MyButton extends StatelessWidget {
   }
 }
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+
+
   final void Function()? onTap;
-  RegisterPage({Key? key, required this.onTap});
+
+  const RegisterPage({super.key, required this.onTap});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
 
   // text controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwController = TextEditingController();
   final TextEditingController confirmPwController = TextEditingController();
+
+  void registrar() async {
+    try {
+      if (pwController.text.trim() == confirmPwController.text.trim()) {
+        FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: pwController.text.trim(),
+        );
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
+        );
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +92,7 @@ class RegisterPage extends StatelessWidget {
             children: [
               // Logo con la imagen en lugar del icono
               Image.asset(
-                'assets/images/icon.png',  // Ruta de la imagen
+                'assets/images/icon.png', // Ruta de la imagen
                 width: 80,
                 height: 80,
                 color: Colors.blue,
@@ -69,7 +105,7 @@ class RegisterPage extends StatelessWidget {
                 'B M A J M C',
                 style: TextStyle(
                   //fontWeight: FontWeight.bold,
-                  fontSize: 20, fontWeight: FontWeight.bold
+                    fontSize: 20, fontWeight: FontWeight.bold
                 ),
               ),
 
@@ -105,7 +141,7 @@ class RegisterPage extends StatelessWidget {
               // sign in button
               MyButton(
                 text: "REGISTRARSE",
-                onTap: () {},
+                onTap: registrar,
               ),
 
               const SizedBox(height: 25),
@@ -120,7 +156,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: registrar,
                     child: const Text(
                       "Inicia sesión aquí",
                       style: TextStyle(
@@ -135,5 +171,6 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+   }
   }
-}
+
